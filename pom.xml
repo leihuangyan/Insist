@@ -44,6 +44,8 @@
         <!--MP 多数据源 -->
         <baomidou-dynamic.version>3.1.1</baomidou-dynamic.version>
 
+        <velocity.version>2.2</velocity.version>
+
 
         <!--<dynamic-datasource-version>2.5.6</dynamic-datasource-version>-->
         <hutool.version>5.3.7</hutool.version>
@@ -102,6 +104,14 @@
             </dependency>
 
             <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
+
+
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${baomidou-generator.version}</version>
@@ -150,7 +160,6 @@
     </dependencyManagement>
 
     <dependencies>
-
         <!-- 后续解耦需要迁移 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
