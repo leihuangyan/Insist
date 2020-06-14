@@ -1,0 +1,28 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: eureka-service-9000
+
+eureka:
+  instance:
+    ##eureka服务端的实例名称
+#    hostname: localhost
+    hostname: www.lhy-eureka9000.com
+  client:
+    # false表示不向注册中心注册自己
+    register-with-eureka: false
+    # false表示自己端就是注册中心,我的职责就是维护服务实例,并不需要检索服务
+    fetch-registry: false
+    service-url:
+      #单机
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+  server:
+    #自我保护模式，保证不可用服务被及时删除
+    #关闭
+#    enable-self-preservation: false
+    #开启
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 2000
