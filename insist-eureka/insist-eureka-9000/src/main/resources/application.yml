@@ -3,13 +3,13 @@ server:
 
 spring:
   application:
-    name: eureka-service-9000
+    name: insist-eureka-9000
 
 eureka:
   instance:
     ##eureka服务端的实例名称
 #    hostname: localhost
-    hostname: www.lhy-eureka9000.com
+    hostname: www.insist-cloud.com
   client:
     # false表示不向注册中心注册自己
     register-with-eureka: false

@@ -12,4 +12,14 @@
     <artifactId>insist-web-control</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <artifactId>insist-api-control</artifactId>
+            <groupId>com.lhy</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+
 </project>

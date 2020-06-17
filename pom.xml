@@ -14,7 +14,6 @@
     <description>Insist</description>
 
     <modules>
-        <module>insist-eureka-9000</module>
         <module>insist-api</module>
         <module>insist-database</module>
         <module>insist-jobs</module>
@@ -22,6 +21,7 @@
         <module>insist-web</module>
         <module>insist-services</module>
         <module>insist-eureka</module>
+        <module>instsi-zookeeper</module>
     </modules>
 
     <properties>

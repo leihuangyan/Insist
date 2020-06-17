@@ -4,12 +4,12 @@ server:
 
 spring:
   application:
-    name: eureka-service-9001
+    name: insist-eureka-9001
 
 eureka:
   instance:
     ##eureka服务端的实例名称
-    hostname: www.lhy-eureka9001.com
+    hostname: www.insist-eureka01.com
   client:
     # false表示不向注册中心注册自己
     register-with-eureka: false
@@ -17,7 +17,7 @@ eureka:
     fetch-registry: false
     service-url:
       # 相互注册
-      defaultZone: http://www.lhy-eureka9002.com:9002/eureka/,http://www.lhy-eureka9003.com:9003/eureka/
+      defaultZone: http://www.insist-eureka02.com:9002/eureka/,http://www.insist-eureka03.com:9003/eureka/
   server:
     #自我保护模式，保证不可用服务被及时删除
     #关闭

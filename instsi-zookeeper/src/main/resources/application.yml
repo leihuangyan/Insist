@@ -1,0 +1,12 @@
+server:
+  port: 9011
+
+spring:
+  application:
+    name: insist-zookeeper-server-9011
+  cloud:
+    zookeeper:
+      connect-string: zookeeper://39.108.172.78:2181?backup=39.108.172.78:2182,39.108.172.78:2183
+      discovery:
+        enabled: true
+        register: true
