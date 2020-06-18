@@ -10,7 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @classPath: com.lhy.insist.EurekaApplication
  * @date: 2020/6/14 16:50
  * @Version: 1.0
- * @description: RunApp
+ * @description: com.lhy.insist.RunApp
  */
 @SpringBootApplication
 @EnableDiscoveryClient

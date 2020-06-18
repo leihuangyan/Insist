@@ -13,4 +13,45 @@
     <artifactId>insist-services-daily</artifactId>
 
 
+    <dependencies>
+
+
+        <!--eureka client-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--        </dependency>-->
+
+        <!--SpringCloud consul-server-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+        <!--SpringCloud consul-server-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
+        <!--        </dependency>-->
+
+        <!--SpringBoot整合Zookeeper客户端-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>-->
+        <!--            <exclusions>-->
+        <!--                &lt;!&ndash;先排除自带的zookeeper3.5.3&ndash;&gt;-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.apache.zookeeper</groupId>-->
+        <!--                    <artifactId>zookeeper</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash;添加zookeeper3.4.14版本&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.zookeeper</groupId>-->
+        <!--            <artifactId>zookeeper</artifactId>-->
+        <!--            <version>3.4.14</version>-->
+        <!--        </dependency>-->
+
+    </dependencies>
 </project>

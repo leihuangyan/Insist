@@ -21,7 +21,8 @@
         <module>insist-web</module>
         <module>insist-services</module>
         <module>insist-eureka</module>
-        <module>instsi-zookeeper</module>
+        <module>insist-zookeeper</module>
+        <module>insist-consul</module>
     </modules>
 
     <properties>

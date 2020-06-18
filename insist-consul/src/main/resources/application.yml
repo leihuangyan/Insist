@@ -1,0 +1,13 @@
+server:
+  port: 9012
+
+spring:
+  application:
+    name: insist-consul-server-9012
+  #consul注册中心地址
+  cloud:
+    consul:
+      host: www.insist-cloud.com
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}

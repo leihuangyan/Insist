@@ -5,7 +5,21 @@ server:
 spring:
   application:
     name: insist-web-control8001
+  #consul注册
+  cloud:
+    consul:
+      host: www.insist-cloud.com
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
 
+    #zookeeper注册
+    zookeeper:
+      #      connect-string: zookeeper://39.108.172.78:2181?backup=39.108.172.78:2182,39.108.172.78:2183
+      connect-string: 39.108.172.78:2181,39.108.172.78:2182,39.108.172.78:2183
+      discovery:
+        enabled: true
+        register: true
 eureka:
   client:
     #表示是否将自己注册进EurekaServer默认为true

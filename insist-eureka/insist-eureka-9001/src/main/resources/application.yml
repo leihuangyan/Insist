@@ -5,7 +5,7 @@ server:
 spring:
   application:
     name: insist-eureka-9001
-
+#eureka注册
 eureka:
   instance:
     ##eureka服务端的实例名称
