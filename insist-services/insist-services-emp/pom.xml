@@ -27,30 +27,32 @@
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
 
-        <!--SpringCloud consul-server-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-consul-discovery</artifactId>-->
-        <!--        </dependency>-->
 
         <!--SpringBoot整合Zookeeper客户端-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>-->
-        <!--            <exclusions>-->
-        <!--                &lt;!&ndash;先排除自带的zookeeper3.5.3&ndash;&gt;-->
-        <!--                <exclusion>-->
-        <!--                    <groupId>org.apache.zookeeper</groupId>-->
-        <!--                    <artifactId>zookeeper</artifactId>-->
-        <!--                </exclusion>-->
-        <!--            </exclusions>-->
-        <!--        </dependency>-->
-        <!--        &lt;!&ndash;添加zookeeper3.4.14版本&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.zookeeper</groupId>-->
-        <!--            <artifactId>zookeeper</artifactId>-->
-        <!--            <version>3.4.14</version>-->
-        <!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>-->
+<!--            <exclusions>-->
+<!--                &lt;!&ndash;先排除自带的zookeeper3.5.3&ndash;&gt;-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.zookeeper</groupId>-->
+<!--                    <artifactId>zookeeper</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;添加zookeeper3.4.14版本&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.zookeeper</groupId>-->
+<!--            <artifactId>zookeeper</artifactId>-->
+<!--            <version>3.4.14</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.slf4j</groupId>-->
+<!--                    <artifactId>slf4j-log4j12</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
 
     </dependencies>
