@@ -36,3 +36,16 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     #Eureka服务端收到最后一次心跳后等待时间上线，单位为秒（默认为90秒） 超时将剔除服务
     lease-expiration-duration-in-seconds: 2
+
+## 注册中心配置结束
+#设置feign客户端超时时间（OpenFeign默认支持ribbon）
+ribbon:
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的实际
+  ReadTimeout: 5000
+  #指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    #feign日志以什么级别监控那个接口
+    com.lhy.insist.service.FinanceService: debug

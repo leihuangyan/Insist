@@ -9,7 +9,7 @@ package com.lhy.insist.hosts;
  * @description: HostConst
  */
 public class HostConst {
-    public static final String EMP_URL = "http://insist-service-emp6001";
-    public static final String FINANCE_URL = "http://insist-service-finance6002";
+    public static final String EMP_URL = "http://INSIST-SERVICE-EMP6001";
+    public static final String FINANCE_URL = "http://INSIST-SERVICE-FINANCE6002";
     public static final String DAILY_URL = "http://insist-service-daily6003";
 }

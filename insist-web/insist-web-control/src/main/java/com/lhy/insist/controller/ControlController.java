@@ -1,8 +1,10 @@
 package com.lhy.insist.controller;
 
 import com.lhy.insist.HostConst;
+import com.lhy.insist.service.FinanceService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,10 +55,21 @@ public class ControlController {
     }
 
 
+    @Autowired
+    private FinanceService financeService;
+
     @GetMapping(value="/vi/finance/{name}")
     @ApiOperation(value = "得到finance",notes = "String")
-    public ResponseEntity<String> finance(@PathVariable(name = "name")String name) {
-        return restTemplate.getForEntity(HostConst.FINANCE_URL + "/vi/finance/{0}", String.class,name);
+    public String finance(@PathVariable(name = "name")String name) {
+//        return restTemplate.getForEntity(HostConst.FINANCE_URL + "/vi/finance/{0}", String.class,name);
+        return financeService.info(name);
+    }
+
+
+    @GetMapping(value="/vi/finance/timeout/{val}")
+    @ApiOperation(value = "测试超时",notes = "String")
+    public String timeout(@PathVariable(name = "val")String val) {
+        return financeService.timeout(val);
     }
 }
 
