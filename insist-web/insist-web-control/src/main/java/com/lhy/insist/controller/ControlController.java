@@ -1,7 +1,10 @@
 package com.lhy.insist.controller;
 
 import com.lhy.insist.HostConst;
+import com.lhy.insist.service.DailyService;
 import com.lhy.insist.service.FinanceService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,7 @@ public class ControlController {
     @Resource
     private RestTemplate restTemplate;
 
+
     @ApiResponses({@ApiResponse(code=400,message="请求参数没填好"),
             @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
@@ -48,12 +52,37 @@ public class ControlController {
         return restTemplate.getForEntity(HostConst.EMP_URL + "/vi/emp/{0}", String.class,name);
     }
 
-    @GetMapping(value="/vi/daily/{name}")
-    @ApiOperation(value = "得到Daily",notes = "String")
-    public ResponseEntity<String> daily(@PathVariable(name = "name")String name) {
-        return restTemplate.getForEntity(HostConst.DAILY_URL + "/vi/daily/{0}", String.class,name);
+
+    @Autowired
+    private DailyService dailyService;
+
+    @GetMapping(value="/v1/daily/study/{name}")
+    @ApiOperation(value = "study",notes = "String")
+    public String study(@PathVariable(name = "name")String name) {
+        return dailyService.study(name);
     }
 
+
+    @HystrixCommand(fallbackMethod = "code_TimeoutFallbackMethod",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
+    })
+    //@HystrixCommand
+    @GetMapping(value="/v1/daily/code/{name}")
+    @ApiOperation(value = "code",notes = "String")
+    public String code(@PathVariable(name = "name")String name) {
+        return dailyService.code(name);
+    }
+
+
+    public String code_TimeoutFallbackMethod (){
+        return "你代码运行太慢了。。。";
+    }
+
+    @GetMapping(value="/v1/daily/game/{name}")
+    @ApiOperation(value = "game",notes = "String")
+    public String daily(@PathVariable(name = "name")String name) {
+        return dailyService.game(name);
+    }
 
     @Autowired
     private FinanceService financeService;
