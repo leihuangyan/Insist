@@ -1,5 +1,6 @@
 package com.lhy.insist.service;
 
+import com.lhy.insist.service.fallback.DailyFallbackService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @description: TODO
  */
 @Service
-@FeignClient(value = "INSIST-SERVICE-DAILY6003")
+@FeignClient(value = "INSIST-SERVICE-DAILY6003",fallback = DailyFallbackService.class)
 public interface DailyService {
-
 
     @GetMapping(value="/v1/daily/study/{name}")
      String study(@PathVariable(name = "name")String name);

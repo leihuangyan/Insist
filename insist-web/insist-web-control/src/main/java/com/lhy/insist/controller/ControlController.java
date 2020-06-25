@@ -3,6 +3,7 @@ package com.lhy.insist.controller;
 import com.lhy.insist.HostConst;
 import com.lhy.insist.service.DailyService;
 import com.lhy.insist.service.FinanceService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import io.swagger.annotations.*;
@@ -29,6 +30,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/api/response")
 @Slf4j
+@DefaultProperties(defaultFallback = "global_FallbackMethod")
 public class ControlController {
 
     @Resource
@@ -58,31 +60,41 @@ public class ControlController {
 
     @GetMapping(value="/v1/daily/study/{name}")
     @ApiOperation(value = "study",notes = "String")
+    @HystrixCommand
     public String study(@PathVariable(name = "name")String name) {
+        int n = 10/0;
         return dailyService.study(name);
     }
 
 
-    @HystrixCommand(fallbackMethod = "code_TimeoutFallbackMethod",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
+    @HystrixCommand(fallbackMethod = "code_FallbackMethod",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
     })
-    //@HystrixCommand
     @GetMapping(value="/v1/daily/code/{name}")
     @ApiOperation(value = "code",notes = "String")
-    public String code(@PathVariable(name = "name")String name) {
+    public String code(@PathVariable(name = "name") String name) {
+        int n = 10/0;
         return dailyService.code(name);
     }
 
 
-    public String code_TimeoutFallbackMethod (){
-        return "你代码运行太慢了。。。";
-    }
-
+    @HystrixCommand
     @GetMapping(value="/v1/daily/game/{name}")
     @ApiOperation(value = "game",notes = "String")
-    public String daily(@PathVariable(name = "name")String name) {
+    public String daily(
+            @ApiParam(value = "传入'下饭'多次 服务熔断，输入'nb'，正常处理。其他的服务降级")
+            @PathVariable(name = "name")String name) {
         return dailyService.game(name);
     }
+
+    public String code_FallbackMethod (String name){
+        return String.format("web-control 指定降级，[%s]:你代码运行太慢了。。。",name);
+    }
+
+    public String global_FallbackMethod (){
+        return String.format("web-control 全局降级处理。。。");
+    }
+
 
     @Autowired
     private FinanceService financeService;
