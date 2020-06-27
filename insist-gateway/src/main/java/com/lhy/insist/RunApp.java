@@ -11,10 +11,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date: 2020/6/14 16:50
  * @Version: 1.0
  * @description: RunApp
+ *
+ * http://www.insist-cloud.com:7001/hystrix
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public  class RunApp {
+public class RunApp {
 
     public static void main(String[] args) {
         SpringApplication.run(RunApp.class, args);
