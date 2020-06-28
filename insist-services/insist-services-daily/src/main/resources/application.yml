@@ -5,8 +5,44 @@ server:
 spring:
   application:
     name: insist-service-daily6003
-  #consul注册
   cloud:
+    stream:
+      #在此处配置要绑定的rabbitmq的服务信息
+      binders:
+        #表示定义的名称，用于binding整合
+        defaultRabbit:
+          #消息组件类型
+          type: rabbit
+          #设置rabbitmq的相关环境配置
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: user
+                password: bitnami
+      #服务的整合处理
+      bindings:
+        #这个名字是一个通道的名称
+        input:
+          #表示要使用的Exchange名称定义
+          destination: studyExchange
+          #设置消息类型，本次为json，本文要设置为“text/plain”
+          content-type: application/json
+          #设置要绑定的消息服务的具体设置
+          binder: defaultRabbit
+          group: shenzhen
+        #这个名字是一个通道的名称
+        output:
+          #表示要使用的Exchange名称定义
+          destination: studyExchange
+          #设置消息类型，本次为json，本文要设置为“text/plain”
+          content-type: application/json
+          #设置要绑定的消息服务的具体设置
+          binder: defaultRabbit
+          group: shenzhen
+
+    #consul注册
     consul:
       host: www.insist-cloud.com
       port: 8500

@@ -23,12 +23,16 @@
         <module>insist-eureka</module>
         <module>insist-zookeeper</module>
         <module>insist-consul</module>
+        <module>insist-config</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
         <!--"Hoxton.SR5":"Spring Boot >=2.2.0.M4 and <2.3.2.BUILD-SNAPSHOT"-->
         <!--参考链接:https://start.spring.io/actuator/info-->

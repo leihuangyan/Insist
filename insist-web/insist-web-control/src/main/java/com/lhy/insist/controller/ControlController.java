@@ -62,7 +62,7 @@ public class ControlController {
     @ApiOperation(value = "study",notes = "String")
     @HystrixCommand
     public String study(@PathVariable(name = "name")String name) {
-        int n = 10/0;
+//        int n = 10/0;
         return dailyService.study(name);
     }
 

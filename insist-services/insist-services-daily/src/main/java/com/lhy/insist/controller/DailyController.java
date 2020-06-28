@@ -23,8 +23,16 @@ public class DailyController {
     @Value("${server.port}")
     private String serverPort;
 
+    /**
+     * 因为config仓库以rest形式暴露，所以所有客户端都可以通过config服务端访问到github上对应的文件信息
+     */
+    @Value("${config.info}")
+    private String configInfo;
+
+
     @GetMapping(value="/v1/daily/study/{name}")
     public String study(@PathVariable(name = "name")String name) {
+        log.info("得到配置:configInfo->{},serverPort:{}",configInfo,serverPort);
         log.info("端口:{},得到结果:【{}:日常->开始学习spring-cloud 】" , serverPort,name);
         return String.format("端口:%s,得到结果:【%s:日常->开始学习spring-cloud 】",serverPort,name);
     }
