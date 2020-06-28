@@ -5,8 +5,54 @@ server:
 spring:
   application:
     name: insist-service-finance6002
-  #consul注册
+
   cloud:
+    stream:
+      #在此处配置要绑定的rabbitmq的服务信息
+      binders:
+        #表示定义的名称，用于binding整合
+        defaultRabbit:
+          #消息组件类型
+          type: rabbit
+          #设置rabbitmq的相关环境配置
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: user
+                password: bitnami
+      #服务的整合处理
+      bindings:
+        #这个名字是一个通道的名称
+        input:
+          #表示要使用的Exchange名称定义
+          destination: studyExchange
+          #设置消息类型，本次为json，本文要设置为“text/plain”
+          content-type: application/json
+          #设置要绑定的消息服务的具体设置
+          binder: defaultRabbit
+          group: shenzhen
+        #这个名字是一个通道的名称
+        output:
+          #表示要使用的Exchange名称定义
+          destination: studyExchange
+          #设置消息类型，本次为json，本文要设置为“text/plain”
+          content-type: application/json
+          #设置要绑定的消息服务的具体设置
+          binder: defaultRabbit
+          group: shenzhen
+
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+    #nacos
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+
+    #consul注册
     consul:
       host: www.insist-cloud.com
       port: 8500
@@ -21,7 +67,6 @@ spring:
         enabled: true
         register: true
 
-
 eureka:
   client:
     #表示是否将自己注册进EurekaServer默认为true
@@ -31,12 +76,19 @@ eureka:
     service-url:
       #单机
       defaultZone: http://www.insist-cloud.com:9000/eureka/
-      #集群
-#      defaultZone: http://www.insist-eureka01.com:9001/eureka/,http://www.insist-eureka02.com:9002/eureka/,http://www.insist-eureka03.com:9003/eureka/
+  #      defaultZone: http://www.insist-eureka01.com:9001/eureka/,http://www.insist-eureka02.com:9002/eureka/,http://www.insist-eureka03.com:9003/eureka/
   instance:
-    instance-id: insist-service-finance6002
+    instance-id: insist-service-daily6003
     prefer-ip-address: true #访问路径可以显示ip
     #Eureka客户端向服务端发送心跳的实际间隔，单位为秒（默认为30秒）
     lease-renewal-interval-in-seconds: 1
     #Eureka服务端收到最后一次心跳后等待时间上线，单位为秒（默认为90秒） 超时将剔除服务
     lease-expiration-duration-in-seconds: 2
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

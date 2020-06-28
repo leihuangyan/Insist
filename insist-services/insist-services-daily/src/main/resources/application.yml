@@ -42,6 +42,15 @@ spring:
           binder: defaultRabbit
           group: shenzhen
 
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+    #nacos
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+
     #consul注册
     consul:
       host: www.insist-cloud.com
@@ -74,3 +83,11 @@ eureka:
     lease-renewal-interval-in-seconds: 1
     #Eureka服务端收到最后一次心跳后等待时间上线，单位为秒（默认为90秒） 超时将剔除服务
     lease-expiration-duration-in-seconds: 2
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -4,8 +4,19 @@ server:
 spring:
   application:
     name: insist-gateway
-  #consul注册
+
   cloud:
+
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+    #nacos
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+
+    #consul注册
     consul:
       host: www.insist-cloud.com
       port: 8500

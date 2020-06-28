@@ -23,6 +23,15 @@ spring:
       ##读取分支
       label: master
 
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+    #nacos
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+
     #consul注册
     consul:
       host: www.insist-cloud.com
@@ -64,4 +73,5 @@ management:
   endpoints:
     web:
       exposure:
-        include: 'bus-refresh'
+#        include: 'bus-refresh'
+        include: '*'

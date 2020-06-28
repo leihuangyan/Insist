@@ -1,12 +1,21 @@
 server:
   port: 8001
 
-
 spring:
   application:
     name: insist-web-control8001
-  #consul注册
   cloud:
+
+    loadbalancer:
+      ribbon:
+        enabled: true
+
+    #nacos
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848/
+
+    #consul注册
     consul:
       host: www.insist-cloud.com
       port: 8500
@@ -53,3 +62,9 @@ logging:
   level:
     #feign日志以什么级别监控那个接口
     com.lhy.insist.service.FinanceService: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
