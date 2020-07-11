@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @name: DemoApplication
@@ -21,7 +24,18 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class RunApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(RunApp.class, args);
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(RunApp.class, args);
+        while(true) {
+            String configInfo = applicationContext.getEnvironment().getProperty("app.name");
+            //获取当前部署的环境
+            String currentEnv = applicationContext.getEnvironment().getProperty("current.env");
+            System.err.println("in "+currentEnv+" enviroment; "+"app name :" + configInfo + ";");
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

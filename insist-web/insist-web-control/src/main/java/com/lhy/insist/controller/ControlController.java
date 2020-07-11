@@ -99,6 +99,7 @@ public class ControlController {
     @Autowired
     private FinanceService financeService;
 
+    @HystrixCommand
     @GetMapping(value="/vi/finance/{name}")
     @ApiOperation(value = "得到finance",notes = "String")
     public String finance(@PathVariable(name = "name")String name) {

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @description: TODO
  */
 @Service
-@FeignClient(value = "INSIST-SERVICE-DAILY6003",fallback = DailyFallbackService.class)
+@FeignClient(value = "insist-service-daily6003",fallback = DailyFallbackService.class)
 public interface DailyService {
 
     @GetMapping(value="/v1/daily/study/{name}")

@@ -34,10 +34,10 @@
         </dependency>
 
 
-        <!--        <dependency>-->
-        <!--            <groupId>com.alibaba.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
 
         <!--SpringBoot整合Zookeeper客户端-->
 <!--        <dependency>-->

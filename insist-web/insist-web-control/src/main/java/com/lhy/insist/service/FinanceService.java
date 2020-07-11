@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @description: TODO
  */
 @Service
-@FeignClient(value = "INSIST-SERVICE-FINANCE6002")
+@FeignClient(value = "insist-service-finance6002")
 public interface FinanceService {
 
 

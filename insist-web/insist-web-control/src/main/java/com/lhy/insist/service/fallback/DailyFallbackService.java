@@ -14,14 +14,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DailyFallbackService  implements DailyService {
 
+    @Override
     public String study(String name) {
         return String.format("web-control 接口降级，[%s]:你学知识太慢了。。。",name);
     }
 
+    @Override
     public String code(String name) {
         return String.format("web-control 接口降级，[%s]:你代码运行太慢了啊。。。",name);
     }
 
+    @Override
     public String game(String name) {
         return String.format("web-control 接口降级，[%s]:你玩游戏太菜了。。。",name);
     }

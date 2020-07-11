@@ -5,6 +5,18 @@ spring:
   application:
     name: insist-service-daily6003
   cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: lhy-insist
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: lhy-insist
+        group: DEV
+        #启用配置
+        enabled: true
+
     #Config客户端配置
     config:
       label: master #分支名称
