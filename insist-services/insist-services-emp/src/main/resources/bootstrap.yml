@@ -3,6 +3,9 @@ server:
 
 
 spring:
+  profiles:
+    active: dev
+
   application:
     name: insist-service-emp6001
   cloud:
@@ -13,7 +16,7 @@ spring:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
         namespace: lhy-insist
-#        group: DEV
+        group: DEV
         #启用配置
         enabled: true
 

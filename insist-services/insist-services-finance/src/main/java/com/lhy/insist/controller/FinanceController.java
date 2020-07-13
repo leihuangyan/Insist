@@ -1,5 +1,7 @@
 package com.lhy.insist.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.lhy.insist.hander.CustomerBlockHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,8 @@ public class FinanceController {
     private String serverPort;
 
     @GetMapping(value="/vi/finance/{name}")
+    @SentinelResource(value = "info",
+            blockHandlerClass = CustomerBlockHandler.class,blockHandler = "handlerExceptionInfo")
     public String info(@PathVariable(name = "name")String name) {
         log.info("端口:{},得到结果:【余额:{} -1000】" , serverPort,name);
         return String.format("端口:%s,得到结果:【余额:%s -1000】",serverPort,name);
@@ -31,6 +35,8 @@ public class FinanceController {
 
 
     @GetMapping(value="/vi/finance/timeout/{val}")
+    @SentinelResource(value = "timeout",
+            blockHandlerClass = CustomerBlockHandler.class,blockHandler = "handlerExceptionTimeOut")
     public String timeout(@PathVariable(name = "val")String val) {
         try {
             TimeUnit.SECONDS.sleep(3);

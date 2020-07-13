@@ -52,6 +52,22 @@ spring:
       discovery:
         server-addr: http://localhost:8848/
 
+    sentinel:
+      transport:
+        #配置Sentin dashboard地址
+        dashboard: localhost:8079
+        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的 端口
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: cloudalibaba-sentinel-service
+            groupId: DEFAULT_GROUP
+            namespace: lhy-insist
+            data-type: json
+            rule-type: flow
+
     #consul注册
     consul:
       host: www.insist-cloud.com
@@ -92,3 +108,7 @@ management:
     web:
       exposure:
         include: '*'
+
+feign:
+  sentinel:
+    enabled: true #激活Sentinel 对Feign的支持

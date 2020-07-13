@@ -2,6 +2,9 @@ server:
   port: 6003
 
 spring:
+  profiles:
+    active: dev
+
   application:
     name: insist-service-daily6003
   cloud:
