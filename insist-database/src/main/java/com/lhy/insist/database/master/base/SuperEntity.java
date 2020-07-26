@@ -22,20 +22,35 @@ public class SuperEntity<T extends Model<T>> extends Model<T> implements Seriali
 
     private static final long serialVersionUID = 3795273066087855203L;
 
-    @TableField("createDate")
-    private LocalDateTime createDate;
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private LocalDateTime createTime;
 
-    @TableField("createCode")
-    private String createCode;
+    /**
+     * 创建人
+     */
+    @TableField("create_user")
+    private String createUser;
 
-    @TableField("updateDate")
-    private LocalDateTime updateDate;
+    /**
+     * 修改时间
+     */
+    @TableField("update_time")
+    private LocalDateTime updateTime;
 
-    @TableField("updateCode")
-    private String updateCode;
+    /**
+     * 修改人
+     */
+    @TableField("update_user")
+    private String updateUser;
 
-    @TableField("state")
+    /**
+     * 逻辑状态
+     */
+    @TableField("logic_state")
     @TableLogic
-    private StateEnum state;
+    private StateEnum logicState;
 
 }

@@ -51,8 +51,8 @@
 
         <velocity.version>2.2</velocity.version>
 
+        <druid.version>1.1.14</druid.version>
 
-        <!--<dynamic-datasource-version>2.5.6</dynamic-datasource-version>-->
         <hutool.version>5.3.7</hutool.version>
 
         <lombok.version>1.18.12</lombok.version>
@@ -115,6 +115,11 @@
             </dependency>
 
 
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.baomidou</groupId>

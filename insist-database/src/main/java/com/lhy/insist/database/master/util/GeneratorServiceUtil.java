@@ -27,12 +27,11 @@ public class GeneratorServiceUtil {
         String projectPath = System.getProperty("user.dir");
         projectPath += modelPath;
         System.out.println("当前项目路径:" + projectPath);
-        String dbUrl = "jdbc:mysql://39.108.172.78:3306/LBFS?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true";
-        //String dbUrl = "jdbc:oracle:thin:@10.230.13.23:1521:fin";
-        String packageName = "com.lhy.insist.database.master";
-        String modelName = "master.";
-        String[] tables = {"t_dynamic_2"};
-//        generateByTables(dbUrl, projectPath, packageName, modelName, tables);
+        String dbUrl = "jdbc:mysql://39.108.172.78:3306/study?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true";
+        String packageName = "com.lhy.insist.database.master.model";
+        String modelName = "user";
+        String[] tables = {"t_user"};
+        generateByTables(dbUrl, projectPath, packageName, modelName, tables);
     }
 
 
@@ -72,23 +71,23 @@ public class GeneratorServiceUtil {
                 //表填充字段
                 .setTableFillList(null)
                 //【实体】是否为构建者模型
-                .setEntityBuilderModel(true)
+                .setChainModel(true)
                 //【实体】是否为lombok模型
                 .setEntityLombokModel(true)
                 //自定义继承的Entity类全称，带包名
-                .setSuperEntityClass("com.linban.model.base.SuperEntity")
+                .setSuperEntityClass("com.lhy.insist.database.master.base.SuperEntity")
                 //自定义基础的Entity类，公共字段
                 .setSuperEntityColumns("createDate", "createCode", "updateDate", "updateCode", "state")
                 //表填充字段
                 //.setTableFillList("")
                 //自定义继承的Mapper类全称，带包名
-                .setSuperMapperClass("com.linban.model.base.SuperMapper")
+                .setSuperMapperClass("com.lhy.insist.database.master.base.SuperMapper")
                 // 自定义继承的Service类全称，带包名
-                .setSuperServiceClass("com.linban.model.base.SuperService")
+                .setSuperServiceClass("com.lhy.insist.database.master.base.SuperService")
                 //自定义继承的ServiceImpl类全称，带包名
                 //.setSuperServiceImplClass("")
                 //自定义继承的Controller类全称，带包名
-                .setSuperControllerClass("com.linban.model.base.SuperController")
+                .setSuperControllerClass("com.lhy.insist.database.master.base.SuperController")
                 //生成 @RestController 控制器
                 .setRestControllerStyle(true)
                 //驼峰命名
@@ -107,7 +106,7 @@ public class GeneratorServiceUtil {
                 // Kotli 模式
                 .setKotlin(false)
                 .setActiveRecord(true)
-                .setSwagger2(true)
+                .setSwagger2(false)
                 .setAuthor("lhy")
                 //生成文件的输出目录
                 .setOutputDir(projectPath + "/src/main/java")
@@ -134,7 +133,7 @@ public class GeneratorServiceUtil {
         packageConfig.setService("service");
         packageConfig.setServiceImpl("service.impl");
         packageConfig.setMapper("dao");
-        packageConfig.setEntity("po");
+        packageConfig.setEntity("entity");
 
 
         // =================================== [自定义配置] ===================================

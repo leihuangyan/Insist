@@ -1,10 +1,14 @@
 package com.lhy.insist.database.master.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-//import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+//import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 
 /**
  * @name: MybatisPlusConfig
@@ -15,26 +19,8 @@ import org.springframework.context.annotation.Configuration;
  * @description:  MybatisPlus 配置类
  */
 @Configuration
-@MapperScan("com.lhy.insist.database.master.**.mapper")
+@MapperScan("com.lhy.insist.database.master.**.dao")
 public class MybatisPlusConfig {
-
-
-    /**
-     * plus 的性能优化
-     * @return PerformanceInterceptor
-     *
-     *
-     @Bean
-     public PerformanceInterceptor performanceInterceptor() {
-         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
-         //SQL 执行性能分析，开发环境使用，线上不推荐。 maxTime 指的是 sql 最大执行时长
-         performanceInterceptor.setMaxTime(1000);
-         //SQL是否格式化 默认false--
-         performanceInterceptor.setFormat(true);
-        return performanceInterceptor;
-     }
-     */
-
 
 
 
@@ -52,24 +38,24 @@ public class MybatisPlusConfig {
     /**
      * dynamic-datasource 不能使用多数据源事务 因此注释
      */
-    ///**
-    // * 配置数据源
-    // * @return DruidDataSource
-    // */
-    //@Bean(name="dataSource")
-    //@ConfigurationProperties(prefix="spring.datasource")
-    //public DruidDataSource dataSource(){
-    //    return new DruidDataSource();
-    //}
-    //
-    ///**
-    // *  配置事物管理器
-    // * @return DataSourceTransactionManager
-    // */
-    //@Bean(name="transactionManager")
-    //public DataSourceTransactionManager transactionManager(){
-    //    return new DataSourceTransactionManager(dataSource());
-    //}
+    /**
+     * 配置数据源
+     * @return DruidDataSource
+     */
+    @Bean(name="dataSource")
+    @ConfigurationProperties(prefix="spring.datasource")
+    public DruidDataSource dataSource(){
+        return new DruidDataSource();
+    }
+
+    /**
+     *  配置事物管理器
+     * @return DataSourceTransactionManager
+     */
+    @Bean(name="transactionManager")
+    public DataSourceTransactionManager transactionManager(){
+        return new DataSourceTransactionManager(dataSource());
+    }
 
 
 }

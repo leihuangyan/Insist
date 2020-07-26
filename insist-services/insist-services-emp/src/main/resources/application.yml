@@ -50,7 +50,7 @@ spring:
     #nacos
     nacos:
       discovery:
-        server-addr: http://localhost:8848/
+        server-addr: www.lhy-aliyun.com:8848
 
     #consul注册
     consul:
