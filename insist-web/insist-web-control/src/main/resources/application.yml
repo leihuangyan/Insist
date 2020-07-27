@@ -2,8 +2,13 @@ server:
   port: 8001
 
 spring:
+
   application:
     name: insist-web-control8001
+
+  main:
+    allow-bean-definition-overriding: true
+
   cloud:
 
     loadbalancer:
