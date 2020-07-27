@@ -1,3 +1,0 @@
-### @PreAuthorize("hasRole('USER')")
-GET http://localhost:6001/users/
-Content-Type: application/json

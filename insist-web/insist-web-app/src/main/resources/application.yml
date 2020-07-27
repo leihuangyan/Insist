@@ -16,6 +16,7 @@ spring:
     nacos:
       discovery:
         server-addr: www.lhy-aliyun.com:8848
+        namespace: lhy-insist
 
     #consul注册
     consul:

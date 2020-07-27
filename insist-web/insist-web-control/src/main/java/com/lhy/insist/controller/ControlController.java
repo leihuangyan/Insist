@@ -55,6 +55,13 @@ public class ControlController {
     }
 
 
+    @GetMapping(value="/vi/emp/users")
+    @ApiOperation(value = "得到users",notes = "String")
+    public ResponseEntity<String> users() {
+        return restTemplate.getForEntity(HostConst.EMP_URL + "/vi/emp/users", String.class);
+    }
+
+
     @Autowired
     private DailyService dailyService;
 
@@ -102,15 +109,14 @@ public class ControlController {
     @GetMapping(value="/vi/finance/{name}")
     @ApiOperation(value = "得到finance",notes = "String")
     public String finance(@PathVariable(name = "name")String name) {
-//        return restTemplate.getForEntity(HostConst.FINANCE_URL + "/vi/finance/{0}", String.class,name);
         return financeService.info(name);
     }
 
 
-    @GetMapping(value="/vi/finance/timeout/{val}")
-    @ApiOperation(value = "测试超时",notes = "String")
-    public String timeout(@PathVariable(name = "val")String val) {
-        return financeService.timeout(val);
+    @GetMapping(value="/vi/finance/error/{val}")
+    @ApiOperation(value = "测试异常",notes = "String")
+    public String error(@PathVariable(name = "val")String val) {
+        return financeService.error(val);
     }
 }
 

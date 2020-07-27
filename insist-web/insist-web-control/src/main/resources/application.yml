@@ -59,6 +59,9 @@ feign:
   hystrix:
     enabled: true
 
+  sentinel:
+    enabled: true #激活Sentinel 对Feign的支持
+
 logging:
   level:
     #feign日志以什么级别监控那个接口

@@ -22,6 +22,6 @@ public interface FinanceService {
     String info(@PathVariable(name = "name")String name) ;
 
 
-    @GetMapping(value="/vi/finance/timeout/{val}")
-    String timeout(@PathVariable(name = "val")String val);
+    @GetMapping(value="/vi/finance/error/{val}")
+    String error(@PathVariable(name = "val")String val);
 }

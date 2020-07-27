@@ -12,6 +12,7 @@ spring:
     nacos:
       discovery:
         server-addr: www.lhy-aliyun.com:8848
+        namespace: lhy-insist
       config:
         server-addr: www.lhy-aliyun.com:8848
         file-extension: yaml

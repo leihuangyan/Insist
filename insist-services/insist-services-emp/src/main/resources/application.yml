@@ -92,3 +92,7 @@ management:
     web:
       exposure:
         include: '*'
+
+feign:
+  sentinel:
+    enabled: true #激活Sentinel 对Feign的支持
