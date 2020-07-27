@@ -51,7 +51,7 @@
 
         <velocity.version>2.2</velocity.version>
 
-        <druid.version>1.1.14</druid.version>
+        <druid.version>1.1.18</druid.version>
 
         <hutool.version>5.3.7</hutool.version>
 
