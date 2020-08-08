@@ -1,6 +1,6 @@
 package com.lhy.insist.service.fallback;
 
-import com.lhy.insist.service.SeataService;
+import com.lhy.insist.service.SeataFinanceWalletService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,16 +12,12 @@ import org.springframework.stereotype.Component;
  * @description: TODO
  */
 @Component
-public class SeataFallbackService implements SeataService {
-
-
-    @Override
-    public String seate1() {
-        return "-------->seate1 回调";
-    }
+public class SeataFinanceWalletFallbackService implements SeataFinanceWalletService {
 
     @Override
-    public String seate2() {
-        return "-------->seate2 回调";
+    public String insert() {
+         return "-------->seate insert 回调";
     }
+
+
 }

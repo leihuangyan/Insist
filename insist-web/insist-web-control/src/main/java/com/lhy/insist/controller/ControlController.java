@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @name: WebController
@@ -117,6 +118,17 @@ public class ControlController {
     @ApiOperation(value = "测试异常",notes = "String")
     public String error(@PathVariable(name = "val")String val) {
         return financeService.error(val);
+    }
+
+    @GetMapping(value="/vi/version")
+    @ApiOperation(value = "测试异常",notes = "String")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "header", dataType = "MessageParam", name = "version", value = "版本", required = true)
+    })
+    public String h(HttpServletRequest request) {
+        String version = request.getHeader("version");
+        System.out.println(version);
+        return "version->"+version;
     }
 }
 

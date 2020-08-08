@@ -52,9 +52,9 @@ spring:
       discovery:
         server-addr: www.lhy-aliyun.com:8848
 
-    alibaba:
-      seata:
-        tx-service-group: my_test_tx_group
+#    alibaba:
+#      seata:
+#        tx-service-group: my_test_tx_group
 
     sentinel:
       transport:
@@ -117,21 +117,19 @@ feign:
   sentinel:
     enabled: true #激活Sentinel 对Feign的支持
 
-seata:
-  enabled: true
-  application-id: ${spring.application.name}
-  tx-service-group: my_test_tx_group
-  enable-auto-data-source-proxy: true
-  config:
-    type: nacos
-    nacos:
-      namespace:
-      serverAddr: www.lhy-aliyun.com
-      group: SEATA_GROUP
-
-
-  registry:
-    type: nacos
-    nacos:
-      server-addr: www.lhy-aliyun.com
-      namespace:
+#seata:
+#  enabled: true
+#  application-id: ${spring.application.name}
+#  tx-service-group: my_test_tx_group
+#  enable-auto-data-source-proxy: true
+#  config:
+#    type: nacos
+#    nacos:
+#      namespace:
+#      serverAddr: www.lhy-aliyun.com
+#      group: SEATA_GROUP
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: www.lhy-aliyun.com
+#      namespace:

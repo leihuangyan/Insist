@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Service
 @FeignClient(value = "insist-service-finance6002")
-public interface SeataService {
+public interface SeataFinanceWalletService {
 
 
-    @GetMapping(value="/v1/finance/seate1")
-    String seate1() ;
+    @GetMapping(value="/v1/finance/insert")
+    String insert() ;
 
-
-    @GetMapping(value="/v1/finance/seate2")
-    String seate2();
 }

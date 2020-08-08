@@ -26,10 +26,8 @@ public class RunApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(RunApp.class, args);
         while(true) {
-            String configInfo = applicationContext.getEnvironment().getProperty("app.name");
-            //获取当前部署的环境
-            String currentEnv = applicationContext.getEnvironment().getProperty("current.env");
-            System.err.println("in "+currentEnv+" enviroment; "+"app name :" + configInfo + ";");
+            String configInfo = applicationContext.getEnvironment().getProperty("config.info");
+            log.info("nacos 远程配置测试->【config.info】->{}",configInfo);
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {

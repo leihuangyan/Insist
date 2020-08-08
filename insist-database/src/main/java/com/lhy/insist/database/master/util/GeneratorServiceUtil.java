@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.lhy.insist.database.master.base.SuperEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,8 @@ public class GeneratorServiceUtil {
         System.out.println("当前项目路径:" + projectPath);
         String dbUrl = "jdbc:mysql://39.108.172.78:3306/study?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=true";
         String packageName = "com.lhy.insist.database.master.model";
-        String modelName = "user";
-        String[] tables = {"t_user"};
+        String modelName = "wallet";
+        String[] tables = {"t_wallet"};
         generateByTables(dbUrl, projectPath, packageName, modelName, tables);
     }
 
@@ -67,19 +68,18 @@ public class GeneratorServiceUtil {
                 //包含表名
                 .setInclude(tableNames)
                 //逻辑删除字段
-                .setLogicDeleteFieldName("state")
-                //表填充字段
-                .setTableFillList(null)
+                .setLogicDeleteFieldName("flag")
+                .setVersionFieldName("version")
                 //【实体】是否为构建者模型
                 .setChainModel(true)
                 //【实体】是否为lombok模型
                 .setEntityLombokModel(true)
                 //自定义继承的Entity类全称，带包名
-                .setSuperEntityClass("com.lhy.insist.database.master.base.SuperEntity")
-                //自定义基础的Entity类，公共字段
-                .setSuperEntityColumns("createDate", "createCode", "updateDate", "updateCode", "state")
+                .setSuperEntityClass(SuperEntity.class)
+                //自定义继承的Entity类，公共字段
+                .setSuperEntityColumns("createDate", "createCode", "updateDate", "updateCode", "flag")
                 //表填充字段
-                //.setTableFillList("")
+//                .setTableFillList("fill1","fill2")
                 //自定义继承的Mapper类全称，带包名
                 .setSuperMapperClass("com.lhy.insist.database.master.base.SuperMapper")
                 // 自定义继承的Service类全称，带包名
@@ -89,7 +89,7 @@ public class GeneratorServiceUtil {
                 //自定义继承的Controller类全称，带包名
                 .setSuperControllerClass("com.lhy.insist.database.master.base.SuperController")
                 //生成 @RestController 控制器
-                .setRestControllerStyle(true)
+                .setRestControllerStyle(false)
                 //驼峰命名
                 .setControllerMappingHyphenStyle(true)
                 //生成实体时，生成字段注解

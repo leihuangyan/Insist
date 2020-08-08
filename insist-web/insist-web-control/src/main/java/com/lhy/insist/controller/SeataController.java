@@ -1,6 +1,6 @@
 package com.lhy.insist.controller;
 
-import com.lhy.insist.service.SeataService;
+import com.lhy.insist.service.SeataFinanceWalletService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -23,21 +23,35 @@ import org.springframework.web.bind.annotation.RestController;
 public class SeataController {
 
     @Autowired
-    private SeataService seataService;
+    private SeataFinanceWalletService seataFinanceWalletService;
 
 
-    @GetMapping(value="/v1/finance/seate1")
-    @ApiOperation(value = "seate1",notes = "seate1")
-    public String seate1() {
-        return seataService.seate1();
+
+
+    @GetMapping(value="/v1/seate/wallet/insert")
+    @ApiOperation(value = "insert",notes = "insert")
+    public String insert() {
+        return seataFinanceWalletService.insert();
     }
 
 
-    @GetMapping(value="/v1/finance/seate2")
-    @ApiOperation(value = "seate2",notes = "seate2")
-    public String seate2() {
-        return seataService.seate2();
-    }
+
+    /**
+     * 生成id,通过雪花算法
+     *
+     * @return
+     */
+//    @GetMapping("/snowflake")
+//    public String getIDBySnowflake() {
+//        ExecutorService threadPool = Executors.newFixedThreadPool(5);
+//        for (int i = 0; i < 20; i++) {
+//            threadPool.submit(() -> {
+//                System.out.println(idGeneratorSnowflake.snowflakeId());
+//            });
+//        }
+//        threadPool.shutdown();
+//        return "hello snowflake";
+//    }
 }
 
 

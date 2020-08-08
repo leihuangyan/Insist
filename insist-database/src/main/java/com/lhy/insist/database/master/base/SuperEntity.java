@@ -49,8 +49,8 @@ public class SuperEntity<T extends Model<T>> extends Model<T> implements Seriali
     /**
      * 逻辑状态
      */
-    @TableField("logic_state")
+    @TableField("flag")
     @TableLogic
-    private StateEnum logicState;
+    private StateEnum flag;
 
 }
